@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import Fruits from '../components/fruits';
 
 export default function App() {
   const [textColor, setTextColor] = useState<string>('red');
@@ -19,6 +20,7 @@ function coolEvent() {
       <Button title="eeby deeby" onPress={changeColor} />
       <Button title="crumb" onPress={coolEvent} />
       <StatusBar style="auto" />
+      <Fruits></Fruits>
     </View>
   );
 }
