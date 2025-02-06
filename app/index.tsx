@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import { Link } from 'expo-router';
 import Fruits from '../components/fruits';
 
 export default function App() {
@@ -21,9 +22,11 @@ function coolEvent() {
       <Button title="crumb" onPress={coolEvent} />
       <StatusBar style="auto" />
       <Fruits></Fruits>
+      <Link style={styles.link} href='/lab_3'>Lab 3</Link>
     </View>
   );
-}
+};
+
 
 const styles = StyleSheet.create({
   container: {
@@ -34,5 +37,9 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
+  },
+  link: {
+    fontSize: 30,
+    
   },
 });
