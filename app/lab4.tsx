@@ -1,0 +1,2 @@
+import { VacationDestination } from "../vacationsDestinations";
+
