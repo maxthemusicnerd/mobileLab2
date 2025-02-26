@@ -24,6 +24,7 @@ function coolEvent() {
       <Fruits></Fruits>
       <Link style={styles.link} href='/lab_3'>Lab 3</Link>
       <Link style={styles.link} href='/lab4'>Lab 4</Link>
+      <Link style={styles.link} href='/lab5'>Lab 5</Link>
     </View>
   );
 };
