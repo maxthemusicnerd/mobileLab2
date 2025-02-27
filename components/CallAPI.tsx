@@ -1,36 +1,46 @@
 import { useEffect, useState } from 'react';
-import { View, Text} from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 const CallAPI = () => {
-
     const [stuff, setStuff] = useState<string>("");
-    useEffect(() => {const makeCall = async () => {
+
+    useEffect(() => {
+        const makeCall = async () => {
             try {
-                const response = await fetch(
-                    "https://jsonplaceholder.typicode.com/posts/1"
-                );
+                const response = await fetch("https://jsonplaceholder.typicode.com/posts/1");
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
-                const data = response.json();
+                const data = await response.json();
 
-                //HERE IS WHERE U CAN EDIT THE STRING AND STUFF
-                setStuff(prev => prev = JSON.stringify(data));
-                console.log(stuff);
-            } catch(error) {
+                const formattedText = Object.entries(data)
+                    .map(([key, value]) => `${key}: ${value}`)
+                    .join(",\n");
+
+                setStuff(formattedText);
+            } catch (error) {
                 alert(error);
-                console.log(error + "HELLO HELLO HELLO");
-                throw error;
+                console.log(error);
             }
-        }
+        };
         makeCall();
     }, []);
 
     return (
-        <View>
-            <Text>{stuff}</Text>
+        <View style={styles.container}>
+            <Text style={styles.text}>{stuff}</Text>
         </View>
     );
-}
+};
+
+const styles = StyleSheet.create({
+    container: {
+        padding: 10,
+    },
+    text: {
+        fontSize: 16,
+        textAlign: "left",
+    },
+});
 
 export default CallAPI;
